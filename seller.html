@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riya M. — Seller Profile · Loop</title>
+<meta name="description" content="Seller profile on Loop — items sold, response time, trust score and community reviews.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="nav nav--static">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html">Loop<span class="dot">.</span></a>
+    <nav class="nav__links">
+      <a href="index.html#map">Nearby</a>
+      <a href="index.html#how">How it works</a>
+      <a href="research.html">Research</a>
+    </nav>
+    <a href="index.html" class="btn btn--ghost btn--sm">← Back to Loop</a>
+  </div>
+</header>
+
+<main class="seller-page">
+
+  <section class="seller-hero">
+    <div class="seller-hero__avatar">RM</div>
+    <p class="eyebrow">Member since 2024 · Indiranagar, Bengaluru</p>
+    <h1 class="h-editorial">Riya M.</h1>
+    <p class="seller-hero__sub">Mostly furniture &amp; study essentials. Responds within the hour, almost always.</p>
+
+    <div class="seller-hero__stats">
+      <div><b class="counter" data-count="47">0</b><span>Items Sold</span></div>
+      <div><b class="counter" data-count="98" data-suffix="%">0</b><span>Response Rate</span></div>
+      <div><b class="counter" data-count="4.9" data-decimal="1">0</b><span>Trust Score</span></div>
+      <div><b class="counter" data-count="52">0</b><span>Exchanges</span></div>
+    </div>
+  </section>
+
+  <section class="seller-section">
+    <div class="section-head section-head--left">
+      <p class="eyebrow">Responsiveness</p>
+      <h2 class="h-editorial" style="font-size:2rem;">Average reply time, last 6 weeks</h2>
+    </div>
+    <div class="seller-chart-card glass">
+      <canvas id="responseChart" height="90"></canvas>
+    </div>
+  </section>
+
+  <section class="seller-section">
+    <div class="section-head section-head--left">
+      <p class="eyebrow">Sustainability</p>
+      <h2 class="h-editorial" style="font-size:2rem;">Second-life score</h2>
+      <p class="section-sub">Calculated from completed exchanges, item condition accuracy, and pickup reliability.</p>
+    </div>
+    <div class="seller__score" style="max-width:360px;">
+      <span>86 / 100</span>
+      <div class="seller__bar"><i style="width:86%"></i></div>
+    </div>
+  </section>
+
+  <section class="seller-section">
+    <div class="section-head section-head--left">
+      <p class="eyebrow">From the community</p>
+      <h2 class="h-editorial" style="font-size:2rem;">Reviews</h2>
+    </div>
+
+    <div class="reviews">
+      <div class="review-card">
+        <div class="review-card__top">
+          <div class="seller__avatar seller__avatar--sm">AK</div>
+          <div>
+            <b>Arjun K.</b>
+            <span class="stars">★★★★★</span>
+          </div>
+          <span class="review-card__date">2 weeks ago</span>
+        </div>
+        <p>Table was exactly as described, even better in person. Riya helped me carry it down two flights of stairs.</p>
+      </div>
+      <div class="review-card">
+        <div class="review-card__top">
+          <div class="seller__avatar seller__avatar--sm">SN</div>
+          <div>
+            <b>Sana N.</b>
+            <span class="stars">★★★★★</span>
+          </div>
+          <span class="review-card__date">1 month ago</span>
+        </div>
+        <p>Quick replies, fair pricing, and she actually showed up on time. Would buy from again.</p>
+      </div>
+      <div class="review-card">
+        <div class="review-card__top">
+          <div class="seller__avatar seller__avatar--sm">MV</div>
+          <div>
+            <b>Mehul V.</b>
+            <span class="stars">★★★★☆</span>
+          </div>
+          <span class="review-card__date">2 months ago</span>
+        </div>
+        <p>Good condition item, minor scratch not mentioned in the listing but otherwise a smooth pickup.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <span class="footer__logo">Loop<span class="dot">.</span></span>
+    <div class="footer__cols">
+      <div>
+        <h5>Product</h5>
+        <a href="index.html#map">Nearby</a>
+        <a href="index.html#how">How it works</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="research.html">Research</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom"><span>© 2026 Loop.</span></div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="seller.js"></script>
+</body>
+</html>
