@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research & Process — Loop</title>
+<meta name="description" content="The research, interviews and early sketches behind Loop's design.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="nav nav--static">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html">Loop<span class="dot">.</span></a>
+    <nav class="nav__links">
+      <a href="index.html#map">Nearby</a>
+      <a href="index.html#how">How it works</a>
+      <a href="seller.html">Seller profile</a>
+    </nav>
+    <a href="index.html" class="btn btn--ghost btn--sm">← Back to Loop</a>
+  </div>
+</header>
+
+<main class="research-page">
+
+  <section class="research-hero">
+    <p class="eyebrow">Process</p>
+    <h1 class="h-editorial">Before the pixels, <em class="script">the people</em>.</h1>
+    <p class="research-hero__sub">A short writeup of how Loop's problem framing and design decisions came from actual conversations, not assumptions.</p>
+  </section>
+
+  <section class="research-section">
+    <div class="section-head section-head--left">
+      <p class="eyebrow">Methodology</p>
+      <h2 class="h-editorial" style="font-size:2rem;">Who I talked to</h2>
+      <p class="section-sub">12 semi-structured interviews, 20–30 minutes each, with two groups most likely to both buy and sell second-hand locally.</p>
+    </div>
+    <div class="research-grid">
+      <div class="research-card">
+        <b>7</b>
+        <span>College students in shared PGs/hostels — high item turnover, low storage space, tight budgets.</span>
+      </div>
+      <div class="research-card">
+        <b>5</b>
+        <span>Young working professionals relocating within the city — furniture and appliances they can't carry on every move.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="research-section">
+    <div class="section-head section-head--left">
+      <p class="eyebrow">Key findings</p>
+      <h2 class="h-editorial" style="font-size:2rem;">What kept coming up</h2>
+    </div>
+    <ul class="finding-list">
+      <li>
+        <b>Everyone already uses WhatsApp groups and Instagram stories</b> — but every single person described the same failure mode: posts get buried, "is this available?" goes unanswered, and items quietly go back into storage.
+      </li>
+      <li>
+        <b>Trust was the #1 blocker</b>, not price. Several students said they'd rather pay slightly more from a "verified" source than risk meeting a stranger from an anonymous post.
+      </li>
+      <li>
+        <b>Distance mattered more than category.</b> Most people said they'd only walk or cycle to pick something up — almost nobody was willing to travel more than 15–20 minutes for anything under ₹3,000.
+      </li>
+      <li>
+        <b>Nobody wanted another generic marketplace app.</b> Three people independently said OLX/Quikr "feel sketchy" — stock photos, no sense of who's on the other end.
+      </li>
+    </ul>
+  </section>
+
+  <section class="research-section">
+    <div class="section-head section-head--left">
+      <p class="eyebrow">From problem to product</p>
+      <h2 class="h-editorial" style="font-size:2rem;">Early sketches</h2>
+      <p class="section-sub">Three rounds of low-fidelity wireframes before any visual design — testing the core idea that distance, not category, should drive the home screen.</p>
+    </div>
+
+    <div class="wireframes">
+      <figure class="wireframe">
+        <svg viewBox="0 0 280 360" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="276" height="356" rx="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="18" y="20" width="244" height="14" rx="3" fill="currentColor" opacity=".15"/>
+          <rect x="18" y="46" width="120" height="8" rx="2" fill="currentColor" opacity=".3"/>
+          <circle cx="140" cy="170" r="80" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" opacity=".4"/>
+          <circle cx="140" cy="170" r="4" fill="currentColor"/>
+          <circle cx="110" cy="140" r="6" fill="currentColor" opacity=".6"/>
+          <circle cx="175" cy="120" r="6" fill="currentColor" opacity=".6"/>
+          <circle cx="90" cy="200" r="6" fill="currentColor" opacity=".6"/>
+          <circle cx="190" cy="195" r="6" fill="currentColor" opacity=".6"/>
+          <rect x="18" y="280" width="244" height="48" rx="8" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".5"/>
+          <rect x="30" y="294" width="80" height="8" rx="2" fill="currentColor" opacity=".3"/>
+          <rect x="30" y="308" width="50" height="6" rx="2" fill="currentColor" opacity=".2"/>
+        </svg>
+        <figcaption>v1 — map-first home, radius as the primary control</figcaption>
+      </figure>
+
+      <figure class="wireframe">
+        <svg viewBox="0 0 280 360" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="276" height="356" rx="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="18" y="20" width="244" height="14" rx="3" fill="currentColor" opacity=".15"/>
+          <rect x="18" y="46" width="60" height="20" rx="10" fill="currentColor" opacity=".25"/>
+          <rect x="84" y="46" width="60" height="20" rx="10" fill="none" stroke="currentColor" opacity=".4"/>
+          <rect x="150" y="46" width="60" height="20" rx="10" fill="none" stroke="currentColor" opacity=".4"/>
+          <rect x="18" y="84" width="115" height="120" rx="10" fill="none" stroke="currentColor" opacity=".5"/>
+          <rect x="147" y="84" width="115" height="120" rx="10" fill="none" stroke="currentColor" opacity=".5"/>
+          <rect x="18" y="218" width="115" height="120" rx="10" fill="none" stroke="currentColor" opacity=".5"/>
+          <rect x="147" y="218" width="115" height="120" rx="10" fill="none" stroke="currentColor" opacity=".5"/>
+        </svg>
+        <figcaption>v2 — category-chip grid, tested poorly: people scrolled past distance entirely</figcaption>
+      </figure>
+
+      <figure class="wireframe">
+        <svg viewBox="0 0 280 360" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="276" height="356" rx="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="18" y="20" width="244" height="14" rx="3" fill="currentColor" opacity=".15"/>
+          <rect x="18" y="46" width="244" height="150" rx="10" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".5"/>
+          <circle cx="140" cy="121" r="55" fill="none" stroke="currentColor" stroke-dasharray="4 4" opacity=".4"/>
+          <rect x="18" y="208" width="60" height="18" rx="9" fill="currentColor" opacity=".25"/>
+          <rect x="84" y="208" width="60" height="18" rx="9" fill="none" stroke="currentColor" opacity=".4"/>
+          <rect x="18" y="240" width="244" height="76" rx="10" fill="none" stroke="currentColor" opacity=".5"/>
+          <rect x="30" y="252" width="90" height="8" rx="2" fill="currentColor" opacity=".3"/>
+          <rect x="30" y="266" width="60" height="6" rx="2" fill="currentColor" opacity=".2"/>
+        </svg>
+        <figcaption>v3 (final) — map stays primary, filters become secondary controls beneath it</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="research-section">
+    <div class="section-head section-head--left">
+      <p class="eyebrow">Decisions this shaped</p>
+      <h2 class="h-editorial" style="font-size:2rem;">What changed because of it</h2>
+    </div>
+    <ul class="finding-list">
+      <li><b>The map became the centerpiece</b>, not a secondary tab — directly responding to "distance mattered more than category."</li>
+      <li><b>Seller profiles got their own page</b> with response time and reviews surfaced early, addressing the trust concern raised by nearly every interviewee.</li>
+      <li><b>Category filters were demoted</b> to a secondary row beneath the map, after v2 tested poorly.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <span class="footer__logo">Loop<span class="dot">.</span></span>
+    <div class="footer__cols">
+      <div>
+        <h5>Product</h5>
+        <a href="index.html#map">Nearby</a>
+        <a href="index.html#how">How it works</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="seller.html">Seller profile</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom"><span>© 2026 Loop.</span></div>
+</footer>
+
+</body>
+</html>
