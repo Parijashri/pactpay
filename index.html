@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loop — Everything Around You</title>
+<meta name="description" content="Loop is the hyperlocal marketplace for buying, selling, renting, borrowing and discovering what your community already owns.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Loop — Everything Around You">
+<meta property="og:description" content="Buy, sell, rent, borrow and discover what your community already owns — within 5–10 km.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=1200&h=630&fit=crop">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&family=Mrs+Saint+Delafield&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Leaflet (free, no API key — see README note for Mapbox swap) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" data-reveal>
+  <div class="nav__inner">
+    <a class="nav__logo" href="#top">Loop<span class="dot">.</span></a>
+    <nav class="nav__links">
+      <a href="#problem">Why Loop</a>
+      <a href="#map">Nearby</a>
+      <a href="#how">How it works</a>
+      <a href="#trust-safety">Trust &amp; Safety</a>
+      <a href="research.html">Research</a>
+    </nav>
+    <div class="nav__right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span class="theme-toggle__icon">☾</span>
+      </button>
+      <a href="#waitlist" class="btn btn--ghost btn--sm">List an Item</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero__glow"></div>
+  <div class="hero__pins" id="heroPins"></div>
+
+  <div class="hero__content">
+    <p class="eyebrow" data-reveal>5–10 km radius · a marketplace next door</p>
+    <h1 class="hero__title">
+      <span class="line" data-line>Everything</span>
+      <span class="line" data-line>Around <em class="script">you</em>.</span>
+    </h1>
+    <p class="hero__sub" data-reveal>
+      Buy, sell, rent, borrow and discover what your community already owns —
+      <span class="script accent-inline">a second life</span> for things, two streets away.
+    </p>
+    <div class="hero__cta" data-reveal>
+      <a href="#map" class="btn btn--primary">Explore Nearby</a>
+      <a href="#waitlist" class="btn btn--outline" id="listItemBtn">List an Item</a>
+    </div>
+  </div>
+
+  <div class="float-card fc-1" data-float>
+    <div class="fc__img fc__img--bike"></div>
+    <div class="fc__meta"><span>Bicycle</span><b>0.6 km</b></div>
+  </div>
+  <div class="float-card fc-2" data-float>
+    <div class="fc__img fc__img--table"></div>
+    <div class="fc__meta"><span>Study Table</span><b>1.2 km</b></div>
+  </div>
+  <div class="float-card fc-3" data-float>
+    <div class="fc__img fc__img--camera"></div>
+    <div class="fc__meta"><span>DSLR</span><b>2.0 km</b></div>
+  </div>
+  <div class="float-card fc-4" data-float>
+    <div class="fc__img fc__img--monitor"></div>
+    <div class="fc__meta"><span>Monitor</span><b>0.9 km</b></div>
+  </div>
+  <div class="float-card fc-5" data-float>
+    <div class="fc__img fc__img--books"></div>
+    <div class="fc__meta"><span>Books</span><b>0.4 km</b></div>
+  </div>
+
+  <!-- mobile-only condensed strip -->
+  <div class="hero__mobile-strip" aria-hidden="true">
+    <span>🚲 Bicycle · 0.6 km</span>
+    <span>🪑 Study Table · 1.2 km</span>
+    <span>📷 DSLR · 2.0 km</span>
+    <span>🖥️ Monitor · 0.9 km</span>
+    <span>📚 Books · 0.4 km</span>
+  </div>
+
+  <div class="hero__scroll" data-reveal>
+    <span>Scroll</span>
+    <div class="hero__scroll-line"><i></i></div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section class="problem" id="problem">
+  <div class="section-head">
+    <p class="eyebrow" data-reveal>The problem</p>
+    <h2 class="h-editorial" data-reveal>Where good things go to <em class="script">disappear</em>.</h2>
+  </div>
+
+  <div class="timeline" id="timeline">
+    <div class="timeline__track">
+      <div class="t-step" data-step>
+        <span class="t-step__icon">💬</span>
+        <h3>WhatsApp Groups</h3>
+        <p>Buried under a hundred messages an hour after it's posted.</p>
+      </div>
+      <div class="t-arrow" data-arrow>↓</div>
+      <div class="t-step" data-step>
+        <span class="t-step__icon">📸</span>
+        <h3>Instagram Stories</h3>
+        <p>Gone in 24 hours. Seen by everyone, found by no one.</p>
+      </div>
+      <div class="t-arrow" data-arrow>↓</div>
+      <div class="t-step" data-step>
+        <span class="t-step__icon">✉️</span>
+        <h3>Lost Messages</h3>
+        <p>"Is this still available?" — sent into the void.</p>
+      </div>
+      <div class="t-arrow" data-arrow>↓</div>
+      <div class="t-step t-step--end" data-step>
+        <span class="t-step__icon">📦</span>
+        <h3>Unsold Items</h3>
+        <p>Back in the cupboard. Still useful. Still unused.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="problem__close" data-reveal>Loop puts everything within reach — searchable, mapped, and trusted.</p>
+</section>
+
+<!-- ============ MAP ============ -->
+<section class="map-section" id="map">
+  <div class="section-head section-head--left">
+    <p class="eyebrow" data-reveal>Live & nearby</p>
+    <h2 class="h-editorial" data-reveal>Like Uber, <em class="script">for objects</em>.</h2>
+    <p class="section-sub" data-reveal>Real OpenStreetMap data, centered near you. Set a radius, filter by category, and watch the city open up.</p>
+  </div>
+
+  <!-- filter bar -->
+  <div class="filter-bar" data-reveal>
+    <div class="filter-chips" id="categoryChips">
+      <button class="chip is-active" data-cat="all">All</button>
+      <button class="chip" data-cat="Sports">Sports</button>
+      <button class="chip" data-cat="Furniture">Furniture</button>
+      <button class="chip" data-cat="Electronics">Electronics</button>
+      <button class="chip" data-cat="Books">Books</button>
+      <button class="chip" data-cat="Music">Music</button>
+    </div>
+    <div class="filter-extra">
+      <label class="filter-price">
+        Max price <b id="maxPriceLabel">₹5,000+</b>
+        <input type="range" min="100" max="5000" step="100" value="5000" id="maxPriceSlider">
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="availableOnly">
+        <span class="toggle__track"><span class="toggle__thumb"></span></span>
+        Available now
+      </label>
+    </div>
+  </div>
+
+  <div class="map-wrap" data-reveal>
+    <div class="map-canvas" id="mapCanvas">
+      <div id="leafletMap"></div>
+
+      <div class="map-empty" id="mapEmpty">
+        <span class="map-empty__icon">🔍</span>
+        <h4>Nothing in range — yet.</h4>
+        <p>Try widening your radius or clearing a filter.</p>
+        <button class="btn btn--outline btn--sm" id="resetFilters">Reset filters</button>
+      </div>
+
+      <div class="map-card" id="mapCard">
+        <div class="map-card__top">
+          <span id="mapCardEmoji">🚲</span>
+          <div>
+            <h4 id="mapCardTitle">Hybrid Bicycle</h4>
+            <p id="mapCardCat">Sports &amp; Outdoors</p>
+          </div>
+        </div>
+        <div class="map-card__row">
+          <span id="mapCardDist">0.6 km away</span>
+          <b id="mapCardPrice">₹120 / day</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-controls">
+      <p class="map-controls__label">
+        Search radius
+        <span class="info-dot" tabindex="0">
+          i
+          <span class="info-tip">
+            Distance is computed with the <b>Haversine formula</b>:<br>
+            <code>d = 2r · asin(√(sin²(Δφ/2) + cosφ₁·cosφ₂·sin²(Δλ/2)))</code><br>
+            where r = Earth's radius, φ = latitude, λ = longitude. It accounts for the
+            Earth's curvature, so distance stays accurate even across larger radii.
+          </span>
+        </span>
+      </p>
+      <input type="range" min="1" max="10" value="5" id="radiusSlider" class="radius-slider">
+      <div class="map-controls__value"><b id="radiusValue">5</b> km — <span id="radiusCount">0</span> items nearby</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="how" id="how">
+  <div class="section-head">
+    <p class="eyebrow" data-reveal>The loop</p>
+    <h2 class="h-editorial" data-reveal>Objects deserve a <em class="script">second life</em>.</h2>
+  </div>
+
+  <div class="how__grid">
+    <div class="how-card" data-reveal>
+      <div class="how-card__num">01</div>
+      <div class="how-card__art how-card__art--discover"></div>
+      <h3>Discover Nearby</h3>
+      <p>Browse what's around you — by category, distance or what's trending on your street.</p>
+    </div>
+    <div class="how-card" data-reveal>
+      <div class="how-card__num">02</div>
+      <div class="how-card__art how-card__art--connect"></div>
+      <h3>Connect Instantly</h3>
+      <p>Message, negotiate, and confirm pickup — all without leaving the app.</p>
+    </div>
+    <div class="how-card" data-reveal>
+      <div class="how-card__num">03</div>
+      <div class="how-card__art how-card__art--second-life"></div>
+      <h3>Give It a Second Life</h3>
+      <p>Hand it over, earn trust points, and keep one more thing out of landfill.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT CATALOG ============ -->
+<section class="product" id="product">
+  <div class="section-head section-head--left">
+    <p class="eyebrow" data-reveal>The listing</p>
+    <h2 class="h-editorial" data-reveal>Every detail, before you knock.</h2>
+  </div>
+
+  <!-- mini catalog -->
+  <div class="catalog" id="catalog" data-reveal>
+    <button class="catalog-card is-active" data-listing="table">
+      <span class="catalog-card__swatch catalog-card__swatch--table"></span>
+      <span>Vintage Study Table</span><b>₹2,400</b>
+    </button>
+    <button class="catalog-card" data-listing="camera">
+      <span class="catalog-card__swatch catalog-card__swatch--camera"></span>
+      <span>DSLR Camera</span><b>₹450/day</b>
+    </button>
+    <button class="catalog-card" data-listing="bicycle">
+      <span class="catalog-card__swatch catalog-card__swatch--bike"></span>
+      <span>Hybrid Bicycle</span><b>₹120/day</b>
+    </button>
+  </div>
+
+  <div class="product-card" data-reveal id="productDetail">
+    <div class="product-card__media">
+      <div class="product-card__img" id="pdImg"></div>
+      <span class="product-card__badge">Verified Seller</span>
+    </div>
+    <div class="product-card__info">
+      <p class="product-card__cat" id="pdCat">Furniture · Study &amp; Home</p>
+      <h3 id="pdTitle">Vintage Study Table</h3>
+      <p class="product-card__desc" id="pdDesc">Solid sheesham wood, gently restored. Owned for 3 years, well looked after, ready for someone new.</p>
+
+      <div class="product-card__stats">
+        <div><span>Price</span><b id="pdPrice">₹2,400</b></div>
+        <div><span>Distance</span><b id="pdDist">1.2 km</b></div>
+        <div><span>Pickup</span><b id="pdPickup">Today, 6 PM</b></div>
+      </div>
+
+      <a class="product-card__seller" href="seller.html" id="pdSellerLink">
+        <div class="seller__avatar" id="pdAvatar">RM</div>
+        <div class="seller__info">
+          <b id="pdSellerName">Riya M.</b>
+          <span id="pdSellerMeta">98% response rate · 47 successful exchanges</span>
+        </div>
+        <div class="seller__score">
+          <span>Sustainability</span>
+          <div class="seller__bar"><i id="pdSellerBar" style="width:86%"></i></div>
+        </div>
+      </a>
+
+      <div class="product-card__cta">
+        <a href="#waitlist" class="btn btn--primary btn--block">Message Seller</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST ============ -->
+<section class="trust" id="trust">
+  <div class="section-head">
+    <p class="eyebrow" data-reveal>Built on trust</p>
+    <h2 class="h-editorial" data-reveal>A community that <em class="script">vouches</em> for itself.</h2>
+  </div>
+
+  <div class="trust__grid">
+    <div class="trust-stat" data-reveal>
+      <b class="counter" data-count="12400">0</b>
+      <span>Verified Sellers</span>
+    </div>
+    <div class="trust-stat" data-reveal>
+      <b class="counter" data-count="96" data-suffix="%">0</b>
+      <span>Response Rate</span>
+    </div>
+    <div class="trust-stat" data-reveal>
+      <b class="counter" data-count="4.8" data-decimal="1">0</b>
+      <span>Community Score</span>
+    </div>
+    <div class="trust-stat" data-reveal>
+      <b class="counter" data-count="38500">0</b>
+      <span>Successful Exchanges</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST & SAFETY (interview depth) ============ -->
+<section class="safety" id="trust-safety">
+  <div class="section-head section-head--left">
+    <p class="eyebrow" data-reveal>How it actually works</p>
+    <h2 class="h-editorial" data-reveal>Trust &amp; safety, <em class="script">by design</em>.</h2>
+    <p class="section-sub" data-reveal>The product decisions behind the dashboard — not just the metrics.</p>
+  </div>
+
+  <div class="safety__grid">
+    <div class="safety-card" data-reveal>
+      <h3>Ranking logic</h3>
+      <p>Listings aren't sorted by recency alone — proximity and seller trust weigh in too.</p>
+      <pre class="code-block"><code>score = 0.40 × recencyScore
+      + 0.35 × proximityScore
+      + 0.25 × sellerTrustScore
+
+proximityScore = 1 − (distanceKm / radiusKm)
+sellerTrustScore = (responseRate × 0.5)
+                  + (completedExchanges_norm × 0.5)</code></pre>
+    </div>
+    <div class="safety-card" data-reveal>
+      <h3>Spam prevention</h3>
+      <ul class="safety-list">
+        <li>Phone verification required before a first listing goes live</li>
+        <li>Image-hash de-duplication flags repeated stock photos</li>
+        <li>Rate limits on new listings per account per day</li>
+        <li>Community "report" button feeds a review queue, not auto-removal</li>
+      </ul>
+    </div>
+    <div class="safety-card" data-reveal>
+      <h3>Dispute resolution</h3>
+      <ul class="safety-list">
+        <li>Pickup requires a two-sided confirmation (buyer + seller tap "received")</li>
+        <li>Unconfirmed exchanges auto-escalate to support after 48 hours</li>
+        <li>Both sides rate the exchange — one-sided ratings don't affect trust score</li>
+        <li>Repeated unresolved disputes reduce listing visibility, not an instant ban</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUSTAINABILITY ============ -->
+<section class="impact" id="impact">
+  <div class="section-head">
+    <p class="eyebrow" data-reveal>Impact, measured</p>
+    <h2 class="h-editorial" data-reveal>Small exchanges. <em class="script">Large</em> impact.</h2>
+  </div>
+
+  <div class="impact__grid">
+    <div class="impact-card glass" data-reveal>
+      <span class="impact-card__label">Waste Prevented</span>
+      <b class="impact-card__num">326 <small>kg</small></b>
+      <div class="impact-card__chart"><canvas id="chartWaste"></canvas></div>
+    </div>
+    <div class="impact-card glass" data-reveal>
+      <span class="impact-card__label">Money Saved</span>
+      <b class="impact-card__num">₹4.2 <small>Lakhs</small></b>
+      <div class="impact-card__chart"><canvas id="chartMoney"></canvas></div>
+    </div>
+    <div class="impact-card glass" data-reveal>
+      <span class="impact-card__label">CO₂ Reduced</span>
+      <b class="impact-card__num">1.1 <small>tonnes</small></b>
+      <div class="impact-card__chart"><canvas id="chartCo2"></canvas></div>
+    </div>
+    <div class="impact-card glass" data-reveal>
+      <span class="impact-card__label">Items Reused</span>
+      <b class="impact-card__num">1,284</b>
+      <div class="impact-card__chart"><canvas id="chartItems"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FUTURE VISION ============ -->
+<section class="future" id="future">
+  <div class="future__bg" id="futureNet"></div>
+  <div class="future__content">
+    <p class="eyebrow eyebrow--light" data-reveal>The future</p>
+    <h2 class="h-editorial h-editorial--light" data-reveal>A city where every object<br>finds its <em class="script script--light">next owner</em>.</h2>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta" id="waitlist">
+  <h2 class="h-editorial" data-reveal>Before you buy new,<br><em class="script">check what's around you</em>.</h2>
+  <div class="final-cta__form" data-reveal>
+    <form id="waitlistForm">
+      <input type="email" placeholder="you@email.com" required id="waitlistEmail">
+      <button type="submit" class="btn btn--primary">Join the Waitlist</button>
+    </form>
+    <p class="waitlist-count" id="waitlistCount"></p>
+    <a href="#map" class="link-underline">Explore Demo →</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__top">
+    <span class="footer__logo">Loop<span class="dot">.</span></span>
+    <div class="footer__cols">
+      <div>
+        <h5>Product</h5>
+        <a href="#map">Nearby</a>
+        <a href="#how">How it works</a>
+        <a href="#impact">Impact</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="research.html">Research</a>
+        <a href="seller.html">Seller profiles</a>
+        <a href="#trust-safety">Trust &amp; Safety</a>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 Loop. Made for the street you live on.</span>
+  </div>
+</footer>
+
+<!-- ============ LIST AN ITEM MODAL ============ -->
+<div class="modal" id="listModal" aria-hidden="true">
+  <div class="modal__backdrop" id="listModalBackdrop"></div>
+  <div class="modal__panel">
+    <button class="modal__close" id="listModalClose" aria-label="Close">×</button>
+    <p class="eyebrow">New listing</p>
+    <h3 class="h-editorial" style="font-size:1.8rem; margin-bottom:24px;">What are you giving a second life?</h3>
+    <form id="listItemForm">
+      <label class="form-field">
+        <span>Title</span>
+        <input type="text" required placeholder="e.g. Acoustic Guitar" id="liTitle">
+      </label>
+      <label class="form-field">
+        <span>Category</span>
+        <select id="liCategory">
+          <option>Sports</option>
+          <option>Furniture</option>
+          <option>Electronics</option>
+          <option>Books</option>
+          <option>Music</option>
+        </select>
+      </label>
+      <label class="form-field">
+        <span>Price (₹)</span>
+        <input type="number" min="0" required placeholder="e.g. 500" id="liPrice">
+      </label>
+      <button type="submit" class="btn btn--primary btn--block">Publish Listing</button>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
